@@ -23,9 +23,9 @@ contract roulette{
                                              block.timestamp,
                                              block.coinbase,
                                              gasleft()));
-        for(uint i = max(0, block.number - security); i <= block.number; i++){
-            random_seed = keccak256(abi.encodePacked(random_seed, blockhash(i)));
-        }
+        //for(uint i = max(0, block.number - security); i <= block.number; i++){
+        //    random_seed = keccak256(abi.encodePacked(random_seed, blockhash(i)));
+        //}
         _;
     }
 
@@ -93,13 +93,13 @@ contract roulette{
 
     }
 
-    function bet_odd(uint amount) public{
-        uint winning_amount = 2 * amount;
+    function bet_odd() payable public shuffle{
+        uint winning_amount = msg.value * 2;
         require(10 * winning_amount <= address(this).balance, "Stakes to high for me");
 
-        uint[] memory winning_numbers;
+        uint[] memory winning_numbers = new uint[](18);
         for(uint i = 0; i < 18; i++){
-            winning_numbers[i] =  (i*2) + 1;
+            winning_numbers[i] = (i*2) + 1;
         }
 
         push_bet(Bet(payable(msg.sender), block.number, winning_numbers, winning_amount));
