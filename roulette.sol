@@ -150,7 +150,7 @@ contract roulette{
         push_bet(Bet(payable(msg.sender), block.number, winning_numbers, winning_amount));
     }
 
-    function close_casion() public onlyOwner{
+    function close_casion() public onlyOwner payout{
         // close casino for new bets
         accepting_bets = false;
 
