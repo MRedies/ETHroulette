@@ -18,4 +18,4 @@ You have a 1:35 payout and a 1/37 chance of winning honestly.
 So if you are every 1000th miner you have an edge of 1.008. Additionally the payout routine only get's trigged if the contract is called, so if you are the only one playing at the casino, you could place a bet, wait until you are the winning miner and only then trigger the payout and thus never loosing money. If other are playing, their bet placement will trigger the payout routine and you might not be the miner for this block.
 
 
-DM me on twitter if you are hiring: @DeFiDingo
+### DM me on twitter if you are hiring: @DeFiDingo
