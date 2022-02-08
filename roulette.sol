@@ -10,6 +10,7 @@ contract roulette{
         uint winning_amount;
     }
 
+    bool reEntranceMutex = false;
     address owner;
     uint constant security = 1;
     bytes32 random_seed;
@@ -72,6 +73,7 @@ contract roulette{
     }
 
     function payout_winnings() public shuffle{
+        require(!reEntranceMutex);
         uint ball = getrandom(37);
         for(uint i = first_bet; i <= last_bet; i++){
             if(bet_list[i].bet_blocknumber > block.number - security){
@@ -88,7 +90,9 @@ contract roulette{
                 uint amount = bet_list[i].winning_amount;
                 pop_bet();
                 if(won){
+                    reEntranceMutex = true;
                     receipient.transfer(amount);
+                    reEntranceMutex = false;
                 }
             }
         }
