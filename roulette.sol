@@ -30,8 +30,8 @@ contract roulette{
     }
 
     modifier payout {
-        payout_winnings();
         _;
+        payout_winnings();
     }
 
     modifier onlyOwner {
@@ -84,10 +84,12 @@ contract roulette{
                     }
                 }
 
-                if(won){
-                    bet_list[i].bettor.transfer(bet_list[i].winning_amount);
-                }
+                address payable receipient = bet_list[i].bettor;
+                uint amount = bet_list[i].winning_amount;
                 pop_bet();
+                if(won){
+                    receipient.transfer(amount);
+                }
             }
         }
 
