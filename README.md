@@ -13,7 +13,9 @@ Since the EVM is a deterministic environment creating random numbers is non-triv
 In order to beat the casino you need often enough to have an expectation value of your earnigs > 1. You get the best odds betting on a single:
 You have a 1:35 payout and a 1/37 chance of winning honestly.
 
-![image](https://user-images.githubusercontent.com/6518935/152679684-c7ddb1ab-988c-4656-bc9f-5dfabea3fed8.png)
+![image](https://user-images.githubusercontent.com/6518935/153165582-9a665e18-76ae-45a1-8aa6-dbe1503a9a0b.png)
+
+
 
 So if you get to mine every 1000th block you have an edge of 1.008. Additionally the payout routine only get's trigged if the contract is called, so if you are the only one playing at the casino, you could place a bet, wait until you are the winning miner and only then trigger the payout and thus never loosing money. If other are playing, their bet placement will trigger the payout routine and you might not be the miner for this block.
 
